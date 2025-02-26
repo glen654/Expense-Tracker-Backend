@@ -19,7 +19,7 @@ export async function addWallet(w:Wallet){
     }
 }
 
-export async function updateWallet(w:Expense,name:string) {
+export async function updateWallet(w:Wallet,name:string) {
     try{
         const updatedWallet = await prisma.wallet.update({
             where:{name:name},
@@ -48,8 +48,27 @@ export async function removeWallet(w:Expense,name:string) {
     }
 }
 
-export async function getWalletAmount(){
+export async function getAllWallets(){
     try{
-        const amount = await prisma.wallet.f
+        const amount = await prisma.wallet.findMany({
+            where:{isDeleted:false}
+        })
+    }catch (err){
+        console.log("Error getting all wallets")
+    }
+}
+
+export async function getWalletAmount(name:string){
+    try{
+        const wallet = await prisma.wallet.findUnique({
+            where:{name:name},
+        })
+        if(wallet){
+            return wallet.amount
+        }else {
+            return null
+        }
+    }catch(err){
+        console.log(err);
     }
 }
