@@ -35,7 +35,7 @@ export async function updateWallet(w:Wallet,name:string) {
     }
 }
 
-export async function removeWallet(w:Expense,name:string) {
+export async function removeWallet(name:string) {
     try{
         const deletedWallet = await prisma.wallet.update({
             where:{name: name},

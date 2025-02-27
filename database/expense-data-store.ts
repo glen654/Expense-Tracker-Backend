@@ -59,7 +59,7 @@ export async function updateExpense(e:Expense,name:string) {
     }
 }
 
-export async function removeExpense(e:Expense,name:string) {
+export async function removeExpense(name:string) {
     try{
         const deletedExpense = await prisma.expense.update({
             where:{name:name},
