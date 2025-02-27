@@ -24,7 +24,7 @@ export async function addExpense(e:Expense,name:string) {
         }
 
         const updatedAmount = wallet.amount - e.amount;
-        if(updatedAmount > 0){
+        if(updatedAmount < 0){
             throw new Error("Insufficient Amount in wallet")
         }
 

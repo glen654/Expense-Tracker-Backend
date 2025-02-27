@@ -4,7 +4,8 @@ import {addExpense, getAllExpenses, removeExpense, updateExpense} from "../datab
 
 const router = express.Router();
 
-router.post('/add',async (req,res)=>{
+router.post('/add/:walletName',async (req,res)=>{
+    const walletName: string = req.params.walletName;
     const expense:Expense = {
         name: req.body.name,
         amount:req.body.amount,
@@ -14,7 +15,7 @@ router.post('/add',async (req,res)=>{
         isDeleted: false
     }
     try {
-        const addedExpense = await addExpense(expense,expense.name);
+        const addedExpense = await addExpense(expense,walletName);
         res.json(addedExpense);
     }catch (err){
         console.log(err)

@@ -50,9 +50,10 @@ export async function removeWallet(name:string) {
 
 export async function getAllWallets(){
     try{
-        const amount = await prisma.wallet.findMany({
+        const wallets = await prisma.wallet.findMany({
             where:{isDeleted:false}
         })
+        return wallets;
     }catch (err){
         console.log("Error getting all wallets")
     }

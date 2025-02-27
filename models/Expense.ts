@@ -4,11 +4,11 @@ export class Expense{
     name: string;
     amount: number;
     category: Category;
-    date: string;
+    date: Date;
     description: string;
     isDeleted: boolean;
 
-    constructor(name: string, amount: number, category: Category, date: string, description: string, isDeleted: boolean) {
+    constructor(name: string, amount: number, category: Category, date: Date, description: string, isDeleted: boolean) {
         this.name = name;
         this.amount = amount;
         this.category = category;
