@@ -59,15 +59,16 @@ export async function getAllWallets(){
     }
 }
 
-export async function getWalletAmount(){
+export async function getWalletAmount(name:string){
     try{
-        const walletAmount = await prisma.wallet.findMany({
-            where:{isDeleted:false},
-            select:{
-                amount: true
-            }
-        });
-        return walletAmount.map(wallet => wallet.amount)
+        const wallet = await prisma.wallet.findUnique({
+            where:{name:name},
+        })
+        if(wallet){
+            return wallet.amount
+        }else {
+            return null
+        }
     }catch(err){
         console.log(err);
     }
