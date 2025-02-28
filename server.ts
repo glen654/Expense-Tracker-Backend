@@ -5,7 +5,7 @@ import WalletRoutes from "./routes/wallet-routes";
 
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:8081',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 };

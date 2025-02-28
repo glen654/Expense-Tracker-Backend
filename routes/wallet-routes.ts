@@ -56,10 +56,9 @@ router.get('/view',async (req,res)=>{
     }
 })
 
-router.get('/amount/:name', async (req,res) => {
-    const name: string = req.params.name;
+router.get('/amount', async (req,res) => {
     try{
-        const amount = await getWalletAmount(name);
+        const amount = await getWalletAmount();
         res.json(amount);
     }catch (err){
         console.log(err)
